@@ -8,16 +8,14 @@ const Login = ({ isAdmin, setIsAdmin }) => {
   let history = useHistory();
 
   const handleLogin = () => {
-    if (username === "admin" && password === "admin") {
-      setIsAdmin(true);
-    } else {
-      setIsAdmin(false);
+    if (username && password) {
+      if (username === "admin" && password === "admin") {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+      history.push("/dashboard");
     }
-    history.push("/dashboard");
-  };
-  const handleUsername = (e) => {
-    console.log(e.target.value);
-    setUsername(e.target.value);
   };
 
   return (
@@ -42,7 +40,7 @@ const Login = ({ isAdmin, setIsAdmin }) => {
                 className="form-control"
                 placeholder="Username"
                 value={username}
-                onChange={(e) => handleUsername(e)}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="input-group mb-3">
@@ -62,7 +60,7 @@ const Login = ({ isAdmin, setIsAdmin }) => {
             </div>
             <button
               type="button"
-              className="btn btn-secondary btn-block"
+              className="btn btn-primary btn-block"
               onClick={handleLogin}
             >
               LOGIN
