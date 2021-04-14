@@ -7,7 +7,14 @@ import { User } from "./Component/User/index";
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState("");
-
+  const [toggle, setToggle] = useState(false);
+  const [state, setState] = React.useState({
+    checkedR: true,
+    checkedO: true,
+    checkedB: true,
+    checkedG: true
+  });
+  const prop = { toggle, setToggle, isAdmin, setIsAdmin, state, setState };
   return (
     <div>
       <Router>
@@ -17,10 +24,13 @@ export default function App() {
               <Login isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
             </Route>
             <Route path="/user">
-              <User />
+              <User {...prop} />
+            </Route>
+            <Route path="/admin">
+              <Admin {...prop} />
             </Route>
             <Route path="/dashboard">
-              {isAdmin === true ? <Admin /> : <User />}
+              {isAdmin === true ? <Admin {...prop} /> : <User {...prop} />}
             </Route>
           </Switch>
         </div>

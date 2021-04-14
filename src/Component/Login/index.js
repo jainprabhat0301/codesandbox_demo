@@ -60,7 +60,11 @@ const Login = ({ isAdmin, setIsAdmin }) => {
             </div>
             <button
               type="button"
-              className="btn btn-primary btn-block"
+              className={
+                username && password
+                  ? "btn btn-primary btn-block"
+                  : "btn btn-secondary btn-block"
+              }
               onClick={handleLogin}
             >
               LOGIN
