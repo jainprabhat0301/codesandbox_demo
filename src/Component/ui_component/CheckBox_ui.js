@@ -2,8 +2,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const CheckBox = (props) => {
-  const { state, setState } = props;
+const CheckBoxUi = (props) => {
+  const { checked, name, label, state, setState } = props;
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
@@ -11,15 +11,11 @@ const CheckBox = (props) => {
     <FormGroup>
       <FormControlLabel
         control={
-          <Checkbox
-            checked={state.checkedR}
-            onChange={handleChange}
-            name="checkedR"
-          />
+          <Checkbox checked={checked} onChange={handleChange} name={name} />
         }
-        label="Error Message"
+        label={label}
       />
     </FormGroup>
   );
 };
-export { CheckBox };
+export { CheckBoxUi };

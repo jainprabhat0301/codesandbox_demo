@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { CheckBox } from "./CheckBox";
+import { CheckBoxComp } from "./CheckBoxComp";
+
 const Admin = (props) => {
-  const { setToggle, toggle } = props;
   let history = useHistory();
   const handleLogout = () => {
     history.push("/");
@@ -10,21 +10,23 @@ const Admin = (props) => {
   return (
     <>
       <h1>Admin</h1>
-      <CheckBox {...props} />
-      <br />
+      <CheckBoxComp {...props} />
       <button type="button" className="btn btn-primary " onClick={handleLogout}>
         Logout
       </button>
       &nbsp;
-      <button
-        type="button"
-        className="btn btn-primary "
-        onClick={() => history.push("/user")}
-      >
-        User
-      </button>
     </>
   );
 };
 
 export { Admin };
+
+{
+  /* <button
+type="button"
+className="btn btn-primary "
+onClick={() => history.push("/user")}
+>
+User
+</button> */
+}
